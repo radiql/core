@@ -1,36 +1,77 @@
 
 package core
 
-type Create struct {
+type CreateMsg struct {
   Interactor CompositeInteractorSpec
   
   Version VersionSpec
   Build   BuildSpec
   Package PackageSpec
   Deploy  DeploymentSpec
+  Meta    Metadata
 }
 
-type Update struct {
+type UpdateMsg struct {
   Interactor CompositeInteractorSpec
   
   Version VersionSpec
   Build   BuildSpec
   Package PackageSpec
   Deploy  DeploymentSpec
+  Meta    Metadata
 }
 
-type Deprecate struct {
+type DeprecateMsg struct {
+  TypeRef InteractorTypeRef
+  Meta    Metadata
 }
 
-type Archive struct {
+type ArchiveMsg struct {
+  TypeRef InteractorTypeRef
+  Meta    Metadata
 }
 
+type BuildMsg struct {
+  TypeRef InteractorTypeRef
+  Meta    Metadata
+}
+
+type DeployMsg struct {
+  TypeRef InteractorTypeRef
+  Meta    Metadata
+}
+
+type RedeployMsg struct {
+  TypeRef InteractorTypeRef
+  Meta    Metadata
+}
+
+type UndeployMsg struct {
+  TypeRef InteractorTypeRef
+  Meta    Metadata
+}  
+
+
+type Metadata map[string]string
+
+
+type InteractorTypeRef struct {
+  Location  string
+  Name      string
+  Version   VersionSpec
+}
+
+type VersionSpec struct {
+  MajorVersion  string
+  MinorVersion  string
+  Build         string
+  Label         string
+}
 
 
 // InteractorSpec describes an Interactor made up of one or more other Interactors.
 type CompositeInteractorSpec struct {
-  Location    string
-  TypeName    string
+  TypeRef      InteractorTypeRef 
   
   Interactors InteractorSpecs
   InPorts     InPortSpecs
