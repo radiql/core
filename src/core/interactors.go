@@ -5,5 +5,3 @@ package core
 type Interactor interface {
 	Process()
 }
-
-// This is a dummy comment.
