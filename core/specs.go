@@ -73,3 +73,8 @@ type OutPortSpecs map[string]OutPortSpec
 
 // ConnectionSpecs defines a list of connections specifications
 type ConnectionSpecs []ConnectionSpec
+
+// DummyStruct is stupid - please remove
+type DummyStruct struct {
+	SillyName string
+}
