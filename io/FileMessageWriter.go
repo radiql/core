@@ -8,7 +8,10 @@ import (
 
 // FileMessageWriter writes messages to a specified file
 type FileMessageWriter struct {
+	// Usually set up on initialisation but can be rolled over into another file path.
 	TargetFilePath <-chan string
+	
+	// A stream of messages to be written.
 	Msg            <-chan interface{}
 }
 
